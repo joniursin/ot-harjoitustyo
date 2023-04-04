@@ -9,3 +9,21 @@ Sovelluksen tarkoituksena on luoda Pacman peli, joka toimii pääpiirteiltää s
 [tuntikirjanpito.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/laskarit/pacman/dokumentaatio/tuntikirjanpito.md)
 
 [changelog.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/laskarit/pacman/dokumentaatio/changelog.md)
+
+### Asennus
+
+1. Tarkista, että python versio on yli 3.8 komenolla:
+
+python3 --version
+
+2. Kloonaa repositorio komennolla:
+
+git clone https://github.com/joniursin/ot-harjoitustyo
+
+3. Asenna riippuvuudet komennolla:
+
+poetry install
+
+4. Käynnistä sovellus komenolla:
+
+poetry run invoke start
