@@ -10,5 +10,8 @@ Tekstiä... *kursivoitua* **lihavoitua** normaalia
 
 [komentorivi.txt](https://github.com/joniursin/ot-harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
 
-Muutos!!!
-UUsi muutos!!!
+### Viikko 2
+
+[vaatimusmaarittely.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+
+[tuntikirjanpito.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
