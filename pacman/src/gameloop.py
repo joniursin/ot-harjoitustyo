@@ -11,7 +11,7 @@ class GameLoop:
 
     def start(self):
         while True:
-            if not self._handle_events():
+            if self._handle_events() == False:
                 break
 
             self._render()
@@ -23,13 +23,13 @@ class GameLoop:
         for event in self._event_queue.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    self._level.move_player(x=-self._cell_size)
+                    self._level.move_player(x_coord=-self._cell_size)
                 if event.key == pygame.K_RIGHT:
-                    self._level.move_player(x=self._cell_size)
+                    self._level.move_player(x_coord=self._cell_size)
                 if event.key == pygame.K_UP:
-                    self._level.move_player(y=-self._cell_size)
+                    self._level.move_player(y_coord=-self._cell_size)
                 if event.key == pygame.K_DOWN:
-                    self._level.move_player(y=self._cell_size)
+                    self._level.move_player(y_coord=self._cell_size)
             elif event.type == pygame.QUIT:
                 return False
 
