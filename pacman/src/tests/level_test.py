@@ -14,6 +14,7 @@ LEVEL_MAP = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 
 CELL_SIZE = 50
 
+
 class TestLevel(unittest.TestCase):
     def setUp(self):
         self.level = Level(LEVEL_MAP, CELL_SIZE)
