@@ -5,18 +5,18 @@ from eventqueue import EventQueue
 from renderer import Renderer
 from clock import Clock
 
-LEVEL_MAP = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 2, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+LEVEL_MAP = [[1, 1, 1, 1, 1, 1, 1, 1, 1],
+             [1, 3, 0, 0, 2, 0, 0, 3, 1],
+             [1, 0, 1, 1, 0, 1, 1, 0, 1],
+             [1, 0, 1, 0, 0, 0, 1, 0, 1],
+             [1, 0, 0, 0, 1, 0, 0, 0, 1],
+             [1, 0, 1, 0, 0, 0, 1, 0, 1],
+             [1, 0, 1, 1, 0, 1, 1, 0, 1],
+             [1, 3, 0, 0, 0, 0, 0, 3, 1],
+             [1, 1, 1, 1, 1, 1, 1, 1, 1]]
 
 CELL_SIZE = 50
+
 
 def main():
     height = len(LEVEL_MAP)
@@ -26,7 +26,7 @@ def main():
 
     display = pygame.display.set_mode((display_width, display_height))
     pygame.display.set_caption("Pacman")
-    
+
     level = Level(LEVEL_MAP, CELL_SIZE)
     event_queue = EventQueue()
     renderer = Renderer(display, level)
@@ -35,6 +35,7 @@ def main():
 
     pygame.init()
     game_loop.start()
+
 
 if __name__ == "__main__":
     main()
