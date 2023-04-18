@@ -23,11 +23,11 @@ class Level:
         height = len(level_map)
         width = len(level_map[0])
 
-        for y in range(height):
-            for x in range(width):
-                cell = level_map[y][x]
-                normalized_x = x * self.cell_size
-                normalized_y = y * self.cell_size
+        for y_coord in range(height):
+            for x_coord in range(width):
+                cell = level_map[y_coord][x_coord]
+                normalized_x = x_coord * self.cell_size
+                normalized_y = y_coord * self.cell_size
 
                 if cell == 0:
                     self.floors.add(Floor(normalized_x, normalized_y))
@@ -43,30 +43,31 @@ class Level:
                     self.ghosts.add(Ghost(normalized_x, normalized_y))
                     self.floors.add(Floor(normalized_x, normalized_y))
 
-        self.all_sprites.add(self.floors, self.boxes, self.coins, self.player, self.ghosts)
+        self.all_sprites.add(self.floors, self.boxes,
+                             self.coins, self.player, self.ghosts)
 
     def check_death(self):
         if pygame.sprite.spritecollide(self.player, self.ghosts, False):
             self.player.kill()
 
-    def _check_move(self, x=0, y=0):
-        self.player.rect.move_ip(x, y)
+    def _check_move(self, x_coord=0, y_coord=0):
+        self.player.rect.move_ip(x_coord, y_coord)
         colliding_walls = pygame.sprite.spritecollide(
             self.player, self.boxes, False)
         can_move = not colliding_walls
 
-        self.player.rect.move_ip(-x, -y)
+        self.player.rect.move_ip(-x_coord, -y_coord)
         return can_move
 
     def _check_collect_coin(self):
         if pygame.sprite.spritecollide(self.player, self.coins, True):
             self.score += 1
 
-    def move_player(self, x=0, y=0):
-        if not self._check_move(x, y) or not self.player.alive():
+    def move_player(self, x_coord=0, y_coord=0):
+        if not self._check_move(x_coord, y_coord) or not self.player.alive():
             return
 
-        self.player.rect.move_ip(x, y)
+        self.player.rect.move_ip(x_coord, y_coord)
         self._check_collect_coin()
 
     def get_score(self):
@@ -74,5 +75,3 @@ class Level:
 
     def get_player(self):
         return self.player
-
-        

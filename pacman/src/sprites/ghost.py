@@ -5,10 +5,10 @@ dirname = os.path.dirname(__file__)
 
 
 class Ghost(pygame.sprite.Sprite):
-    def __init__(self, x=0, y=0):
+    def __init__(self, x_coord=0, y_coord=0):
         super().__init__()
         self.image = pygame.image.load(os.path.join(
             dirname, "..", "assets", "ghost.png"))
         self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        self.rect.x = x_coord
+        self.rect.y = y_coord

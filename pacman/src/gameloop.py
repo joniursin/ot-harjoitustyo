@@ -11,7 +11,7 @@ class GameLoop:
 
     def start(self):
         while True:
-            if self._handle_events() == False:
+            if not self._handle_events():
                 break
 
             self._render()
