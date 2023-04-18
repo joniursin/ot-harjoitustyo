@@ -7,6 +7,7 @@ from sprites.coin import Coin
 
 class Level:
     def __init__(self, level_map, cell_size):
+        self.score = 0
         self.cell_size = cell_size
         self.player = None
         self.boxes = pygame.sprite.Group()
@@ -48,8 +49,18 @@ class Level:
         self.player.rect.move_ip(-x, -y)
         return can_move
 
+    def _check_collect_coin(self):
+        if pygame.sprite.spritecollide(self.player, self.coins, True):
+            self.score += 1
+
     def move_player(self, x=0, y=0):
         if not self._check_move(x, y):
             return
 
         self.player.rect.move_ip(x, y)
+        self._check_collect_coin()
+
+    def get_score(self):
+        return self.score
+
+        
