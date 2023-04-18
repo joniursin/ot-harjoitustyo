@@ -18,6 +18,8 @@ class GameLoop:
             self._clock.tick(60)
 
     def _handle_events(self):
+        self._level.check_death()
+
         for event in self._event_queue.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:

@@ -45,6 +45,10 @@ class Level:
 
         self.all_sprites.add(self.floors, self.boxes, self.coins, self.player, self.ghosts)
 
+    def check_death(self):
+        if pygame.sprite.spritecollide(self.player, self.ghosts, False):
+            self.player.kill()
+
     def _check_move(self, x=0, y=0):
         self.player.rect.move_ip(x, y)
         colliding_walls = pygame.sprite.spritecollide(
@@ -59,7 +63,7 @@ class Level:
             self.score += 1
 
     def move_player(self, x=0, y=0):
-        if not self._check_move(x, y):
+        if not self._check_move(x, y) or not self.player.alive():
             return
 
         self.player.rect.move_ip(x, y)
@@ -67,5 +71,8 @@ class Level:
 
     def get_score(self):
         return self.score
+
+    def get_player(self):
+        return self.player
 
         
