@@ -10,6 +10,8 @@ Sovelluksen tarkoituksena on luoda Pacman peli, joka toimii pääpiirteiltää s
 
 [changelog.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/changelog.md)
 
+[arkkitehtuuri.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/arkkitehtuuri.md)
+
 ### Asennus
 
 1. Tarkista, että python versio on yli 3.8 komenolla:
