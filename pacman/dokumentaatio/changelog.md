@@ -4,3 +4,9 @@
 - Pelaaja voi liikkua valkoisilla ruuduilla
 - Pelaaja ei voi liikkua reunojen eli mustien ruutujen läpi
 - Testattu, että pelaaja ei voi liikkua reunojen yli
+
+## Viikko 2
+- Pelikenttää päivitetty
+- Pelikentälle luodaan nyt myös kolikoita, sekä vihollisia
+- Kolikoita voidaan kerätä, jolloin score nousee yhdellä ja kolikko katoaa
+- Vihollisiin voidaan osua, jolloin pelaaja kuolee ja peli loppuu
