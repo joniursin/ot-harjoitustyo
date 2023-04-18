@@ -3,6 +3,7 @@ from sprites.player import Player
 from sprites.box import Box
 from sprites.floor import Floor
 from sprites.coin import Coin
+from sprites.ghost import Ghost
 
 
 class Level:
@@ -13,6 +14,7 @@ class Level:
         self.boxes = pygame.sprite.Group()
         self.floors = pygame.sprite.Group()
         self.coins = pygame.sprite.Group()
+        self.ghosts = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
 
         self._initialize_sprites(level_map)
@@ -37,8 +39,11 @@ class Level:
                 elif cell == 3:
                     self.coins.add(Coin(normalized_x, normalized_y))
                     self.floors.add(Floor(normalized_x, normalized_y))
+                elif cell == 4:
+                    self.ghosts.add(Ghost(normalized_x, normalized_y))
+                    self.floors.add(Floor(normalized_x, normalized_y))
 
-        self.all_sprites.add(self.floors, self.boxes, self.coins, self.player)
+        self.all_sprites.add(self.floors, self.boxes, self.coins, self.player, self.ghosts)
 
     def _check_move(self, x=0, y=0):
         self.player.rect.move_ip(x, y)
