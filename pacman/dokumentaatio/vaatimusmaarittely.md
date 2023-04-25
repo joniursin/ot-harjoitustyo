@@ -7,9 +7,9 @@ Sovelluksen tarkoituksena on luoda Pacman peli, joka toimii pääpiirteiltää s
 ## Suunnitellut toiminnallisuudet
 
 Pelin suunnitellut runko-ominaisuudet:
-- Käynnistäessä sovellus luo pacman pelikentän ja sinne pelihahmon
-- Pelissä saadaan pisteitä samalla tavalla kuin alkupäräisessä pacmanissa ja se toimii pitkälti identtisesti.
-- Peliä voidaan pelata nii kauan kunnes pelaajalta loppuu kaikki elämät
+- Käynnistäessä sovellus luo pacman pelikentän ja sinne pelihahmon -tehty
+- Pelissä saadaan pisteitä samalla tavalla kuin alkupäräisessä pacmanissa ja se toimii pitkälti identtisesti. -tehty
+- Peliä voidaan pelata nii kauan kunnes pelaajalta loppuu kaikki elämät -tehty
 - Hävitessä pelaaja voi tallentaa tuloksensa nimellä sijoitus listaan
 - Aloitus ruudussa näytetään nämä tallennetut tuloksen parhausjärjestyksessä
 - Tuloksiin tallennetaan myös päivämäärä
