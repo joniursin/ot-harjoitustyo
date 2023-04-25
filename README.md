@@ -51,5 +51,13 @@ poetry run invoke test
 Testikattavuusraportti luodaan komennolla:
 
 ```bash
-poetry run invoke test
+poetry run invoke coverage-report
+```
+
+### Pylint
+
+Pylint tarkistukset voidaan suorittaa komenolla:
+
+```bash
+poetry run invoke lint
 ```
