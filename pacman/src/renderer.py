@@ -18,8 +18,16 @@ class Renderer:
 
         # Draw game over
         if not Level.get_player(self._level).alive():
-            font = pygame.font.SysFont("Arial", 36)
             score_text = font.render("Game Over!", True, (255, 255, 255))
             self._display.blit(score_text, (160, 10))
+
+        if Level.get_lives(self._level) > 0:
+            score_text = font.render(
+                "Lives: " + str(Level.get_lives(self._level)), True, (255, 255, 255))
+            self._display.blit(score_text, (160, 10))
+
+        score_text = font.render(
+            "Level: " + str(Level.get_level(self._level)), True, (255, 255, 255))
+        self._display.blit(score_text, (460, 10))
 
         pygame.display.update()
