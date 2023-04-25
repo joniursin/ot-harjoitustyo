@@ -47,6 +47,9 @@ class Level:
                 elif cell == 2:
                     self.player = Player(normalized_x, normalized_y)
                     self.floors.add(Floor(normalized_x, normalized_y))
+                elif cell == 3:
+                    self.coins.add(Coin(normalized_x, normalized_y))
+                    self.floors.add(Floor(normalized_x, normalized_y))
                 elif cell == 4:
                     self.ghosts.add(Ghost(normalized_x, normalized_y))
                     self.floors.add(Floor(normalized_x, normalized_y))
