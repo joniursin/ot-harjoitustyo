@@ -1,5 +1,6 @@
 import pygame
 
+
 class GameLoop:
     def __init__(self, level, renderer, event_queue, clock, cell_size):
         self._level = level
@@ -11,7 +12,7 @@ class GameLoop:
 
     def start(self):
         while True:
-            if self._handle_events() == False:
+            if self._handle_events() is False:
                 break
             self._render()
             self._clock.tick(60)
@@ -21,7 +22,7 @@ class GameLoop:
             self._ghost_movement = self._clock.get_ticks() + 2000
 
         self._level.check_coins()
-        #load new level
+        # load new level
 
         if self._clock.get_ticks() > self._ghost_movement:
             self._level.move_ghosts()
@@ -39,7 +40,6 @@ class GameLoop:
                     self._level.move_player(y_coord=self._cell_size)
             elif event.type == pygame.QUIT:
                 return False
-            
 
     def _render(self):
         self._renderer.render()

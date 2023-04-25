@@ -68,4 +68,3 @@ class TestLevel(unittest.TestCase):
         self.level.move_player(y_coord=-CELL_SIZE)
         self.level.check_death()
         self.assertEqual(self.level.get_lives(), 2)
-

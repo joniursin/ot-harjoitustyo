@@ -1,12 +1,11 @@
+import random
 import pygame
 from sprites.player import Player
 from sprites.box import Box
 from sprites.floor import Floor
 from sprites.coin import Coin
 from sprites.ghost import Ghost
-from sprites.teleporter_left import TeleporterLeft
-from sprites.teleporter_right import TeleporterRight
-import random
+from sprites.teleporter import Teleporter
 
 
 class Level:
@@ -54,14 +53,16 @@ class Level:
                     self.ghosts.add(Ghost(normalized_x, normalized_y))
                     self.floors.add(Floor(normalized_x, normalized_y))
                 elif cell == 5:
-                    self.teleporter_left = TeleporterLeft(normalized_x, normalized_y)
+                    self.teleporter_left = Teleporter(
+                        normalized_x, normalized_y, "left")
                     self.floors.add(Floor(normalized_x, normalized_y))
                 elif cell == 6:
-                    self.teleporter_right = TeleporterRight(normalized_x, normalized_y)
+                    self.teleporter_right = Teleporter(
+                        normalized_x, normalized_y, "right")
                     self.floors.add(Floor(normalized_x, normalized_y))
 
         self.all_sprites.add(self.floors, self.boxes,
-                             self.coins, self.player, self.ghosts) #teleporters removed (for now)
+                             self.coins, self.player, self.ghosts)  # teleporters removed (for now)
 
     def check_death(self):
         death = pygame.sprite.spritecollide(self.player, self.ghosts, False)
@@ -97,10 +98,10 @@ class Level:
         if not self._check_move(x_coord, y_coord) or not self.player.alive():
             return
         self.player.rect.move_ip(x_coord, y_coord)
-        #if pygame.sprite.collide_rect(self.player, self.teleporter_left):
-            #self.player.rect.move_ip(self.cell_size*(self.width-1), y_coord)
-        #elif pygame.sprite.collide_rect(self.player, self.teleporter_right):
-            #self.player.rect.move_ip(-(self.cell_size*(self.width-1)), y_coord)
+        # if pygame.sprite.collide_rect(self.player, self.teleporter_left):
+        # self.player.rect.move_ip(self.cell_size*(self.width-1), y_coord)
+        # elif pygame.sprite.collide_rect(self.player, self.teleporter_right):
+        # self.player.rect.move_ip(-(self.cell_size*(self.width-1)), y_coord)
 
         self._check_collect_coin()
 
@@ -109,20 +110,20 @@ class Level:
 
     def get_player(self):
         return self.player
-    
+
     def move_ghosts(self):
         for ghost in self.ghosts:
             ghost.choose_move(self.cell_size, self.boxes)
 
     def get_lives(self):
         return self.lives
-    
+
     def set_lives(self, value):
         self.lives = value
-    
+
     def get_level(self):
         return self.level
-    
+
     def check_coins(self):
         if not self.coins:
             # no coins on map = new level
