@@ -26,7 +26,7 @@ python3 --version
 git clone https://github.com/joniursin/ot-harjoitustyo
 ```
 
-3. Asenna riippuvuudet komennolla:
+3. Siirry kansioon pacman ja asenna riippuvuudet komennolla:
 
 ```bash
 poetry install
