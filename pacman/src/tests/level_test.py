@@ -52,7 +52,20 @@ class TestLevel(unittest.TestCase):
 
         self.assert_coordinates_equal(player, CELL_SIZE, 2 * CELL_SIZE)
 
+        self.level.set_lives(1)
         self.level.move_player(y_coord=-CELL_SIZE)
+
         self.level.check_death()
         self.assertEqual(self.level.player.alive(), False)
+
+    def test_losing_lives(self):
+        player = self.level.player
+
+        self.assertEqual(self.level.get_lives(), 3)
+
+        self.assert_coordinates_equal(player, CELL_SIZE, 2 * CELL_SIZE)
+
+        self.level.move_player(y_coord=-CELL_SIZE)
+        self.level.check_death()
+        self.assertEqual(self.level.get_lives(), 2)
 
