@@ -12,6 +12,9 @@ import random
 class Level:
     def __init__(self, level_map, cell_size):
         self.score = 0
+        self.lives = 3
+        self.level = 1
+        self.level_map = level_map
         self.cell_size = cell_size
         self.width = len(level_map[0])
         self.player = None
@@ -23,7 +26,7 @@ class Level:
         self.ghosts = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
 
-        self._initialize_sprites(level_map)
+        self._initialize_sprites(self.level_map)
 
     def _initialize_sprites(self, level_map):
         height = len(level_map)
@@ -58,8 +61,19 @@ class Level:
                              self.coins, self.player, self.ghosts) #teleporters removed (for now)
 
     def check_death(self):
+        death = pygame.sprite.spritecollide(self.player, self.ghosts, False)
         if pygame.sprite.spritecollide(self.player, self.ghosts, False):
-            self.player.kill()
+            self.lives -= 1
+            if self.lives > 0:
+                self.boxes = pygame.sprite.Group()
+                self.floors = pygame.sprite.Group()
+                self.coins = pygame.sprite.Group()
+                self.ghosts = pygame.sprite.Group()
+                self.all_sprites = pygame.sprite.Group()
+                self._initialize_sprites(self.level_map)
+            else:
+                self.player.kill()
+        return death
 
     def _check_move(self, x_coord=0, y_coord=0):
         self.player.rect.move_ip(x_coord, y_coord)
@@ -96,3 +110,20 @@ class Level:
     def move_ghosts(self):
         for ghost in self.ghosts:
             ghost.choose_move(self.cell_size, self.boxes)
+
+    def get_lives(self):
+        return self.lives
+    
+    def get_level(self):
+        return self.level
+    
+    def check_coins(self):
+        if not self.coins:
+            # no coins on map = new level
+            self.level += 1
+            self.boxes = pygame.sprite.Group()
+            self.floors = pygame.sprite.Group()
+            self.coins = pygame.sprite.Group()
+            self.ghosts = pygame.sprite.Group()
+            self.all_sprites = pygame.sprite.Group()
+            self._initialize_sprites(self.level_map)

@@ -17,7 +17,11 @@ class GameLoop:
             self._clock.tick(60)
 
     def _handle_events(self):
-        self._level.check_death()
+        if self._level.check_death():
+            self._ghost_movement = self._clock.get_ticks() + 2000
+
+        self._level.check_coins()
+        #load new level
 
         if self._clock.get_ticks() > self._ghost_movement:
             self._level.move_ghosts()
