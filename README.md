@@ -29,3 +29,19 @@ poetry install
 4. Käynnistä sovellus komenolla:
 
 poetry run invoke start
+
+### Testaus
+
+Pelkät testit suoritetaan komennolla:
+
+```bash
+poetry run invoke test
+```
+
+### Testikattavuus
+
+Testikattavuusraportti luodaan komennolla:
+
+```bash
+poetry run invoke test
+```
