@@ -16,19 +16,27 @@ Sovelluksen tarkoituksena on luoda Pacman peli, joka toimii pääpiirteiltää s
 
 1. Tarkista, että python versio on yli 3.8 komenolla:
 
+```bash
 python3 --version
+```
 
 2. Kloonaa repositorio komennolla:
 
+```bash
 git clone https://github.com/joniursin/ot-harjoitustyo
+```
 
 3. Asenna riippuvuudet komennolla:
 
+```bash
 poetry install
+```
 
 4. Käynnistä sovellus komenolla:
 
+```bash
 poetry run invoke start
+```
 
 ### Testaus
 
