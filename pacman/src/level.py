@@ -6,6 +6,7 @@ from sprites.coin import Coin
 from sprites.ghost import Ghost
 from sprites.teleporter_left import TeleporterLeft
 from sprites.teleporter_right import TeleporterRight
+import random
 
 
 class Level:
@@ -35,14 +36,13 @@ class Level:
                 normalized_y = y_coord * self.cell_size
 
                 if cell == 0:
+                    if random.randrange(0, 100) <= 55:
+                        self.coins.add(Coin(normalized_x, normalized_y))
                     self.floors.add(Floor(normalized_x, normalized_y))
                 elif cell == 1:
                     self.boxes.add(Box(normalized_x, normalized_y))
                 elif cell == 2:
                     self.player = Player(normalized_x, normalized_y)
-                    self.floors.add(Floor(normalized_x, normalized_y))
-                elif cell == 3:
-                    self.coins.add(Coin(normalized_x, normalized_y))
                     self.floors.add(Floor(normalized_x, normalized_y))
                 elif cell == 4:
                     self.ghosts.add(Ghost(normalized_x, normalized_y))
