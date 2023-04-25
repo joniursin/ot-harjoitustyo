@@ -117,6 +117,9 @@ class Level:
     def get_lives(self):
         return self.lives
     
+    def set_lives(self, value):
+        self.lives = value
+    
     def get_level(self):
         return self.level
     
