@@ -2,6 +2,10 @@
 
 Sovelluksen tarkoituksena on luoda Pacman peli, joka toimii pääpiirteiltää samalla tavalla kuin alkuperäinen. Pelissä pelaajan tulee vältellä vihollisia joihin osuessa menettää elämän. Kun kaikki elemät on menetetty peli loppuu. Peli osaa pitää kirjaa siinä saavutetuista high scoreista ja tallentaa ne ylös.
 
+### Release
+
+[Release 1](https://github.com/joniursin/ot-harjoitustyo/releases/tag/viikko5)
+
 ### Dokumentaatio
 
 [vaatimusmaarittely.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/vaatimusmaarittely.md)
