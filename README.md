@@ -8,13 +8,15 @@ Sovelluksen tarkoituksena on luoda Pacman peli, joka toimii pääpiirteiltää s
 
 ### Dokumentaatio
 
-[vaatimusmaarittely.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/vaatimusmaarittely.md)
+[Käyttöohje](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
 
-[tuntikirjanpito.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/tuntikirjanpito.md)
+[Vaatimusmaarittely](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/vaatimusmaarittely.md)
 
-[changelog.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/changelog.md)
+[Tuntikirjanpito](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/tuntikirjanpito.md)
 
-[arkkitehtuuri.md](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/arkkitehtuuri.md)
+[Changelog](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/changelog.md)
+
+[Arkkitehtuuri](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/arkkitehtuuri.md)
 
 ### Asennus
 
