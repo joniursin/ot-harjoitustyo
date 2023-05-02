@@ -16,6 +16,7 @@ LEVEL_MAP = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 CELL_SIZE = 50
 CLOCK = Clock()
 
+
 class TestLevel(unittest.TestCase):
     def setUp(self):
         self.level = Level(LEVEL_MAP, CELL_SIZE, CLOCK)
@@ -71,7 +72,7 @@ class TestLevel(unittest.TestCase):
         self.assertEqual(self.level.get_lives(), 2)
 
     def test_powerup_pickup(self):
-        
+
         player = self.level.player
 
         self.assert_coordinates_equal(player, CELL_SIZE, 2 * CELL_SIZE)
@@ -91,7 +92,7 @@ class TestLevel(unittest.TestCase):
         player = self.level.player
 
         self.assertEqual(self.level.get_lives(), 3)
-        
+
         self.assert_coordinates_equal(player, CELL_SIZE, 2 * CELL_SIZE)
 
         self.assertEqual(self.level.get_powerup_status(), False)

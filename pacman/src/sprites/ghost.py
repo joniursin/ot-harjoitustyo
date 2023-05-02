@@ -11,6 +11,7 @@ class Ghost(pygame.sprite.Sprite):
     Args:
         pygame (pygame.sprite): Luo sprite olion
     """
+
     def __init__(self, x_coord=0, y_coord=0):
         """Luokan konstruktori, joka luo oliolle paikan pelikentällä
 

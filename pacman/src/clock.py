@@ -4,6 +4,7 @@ import pygame
 class Clock:
     """Luokka, jota käytetään pelin kellona
     """
+
     def __init__(self):
         """Luokan konstruktori, joka luo kellon
         """
