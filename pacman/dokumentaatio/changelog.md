@@ -18,3 +18,8 @@
 - Pelaaja saa pelin alussa 3 elämää, kun nämä menettää peli loppuu
 - Elämän menettää osumalla kummitukseen, jolloin pelikenttä resetattaan
 - Pelaaja voi kerätä kaikki kolikot, jolloin luodaan uusi kenttä
+
+## Vikko 4
+- Lisätty power up, jonka avulla pelaaja voi syödä vihollisia tietyn ajan verran
+- Lisätty menu, jonka avulla voidaan käynnistää peli ja palata sinne pelin loppuessa
+- 
