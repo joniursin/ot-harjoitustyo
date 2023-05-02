@@ -22,3 +22,4 @@
 ## Vikko 4
 - Lisätty power up, jonka avulla pelaaja voi syödä vihollisia tietyn ajan verran
 - Lisätty menu, jonka avulla voidaan käynnistää peli ja palata sinne pelin loppuessa
+- Lisätty erillinen ruutu, kun pelaaja kuolee
