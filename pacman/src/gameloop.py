@@ -21,8 +21,12 @@ class GameLoop:
         if self._level.check_death():
             self._ghost_movement = self._clock.get_ticks() + 2000
 
-        self._level.check_coins()
         # load new level
+        self._level.check_coins()
+
+        # deactivates power up if active
+        self._level._check_collect_powerup()
+        self._level._deactivate_powerup()
 
         if self._clock.get_ticks() > self._ghost_movement:
             self._level.move_ghosts()
@@ -38,8 +42,10 @@ class GameLoop:
                     self._level.move_player(y_coord=-self._cell_size)
                 if event.key == pygame.K_DOWN:
                     self._level.move_player(y_coord=self._cell_size)
+                if event.key == pygame.K_e and self._level.check_death():
+                    return False
             elif event.type == pygame.QUIT:
-                return False
+                pygame.quit()
 
     def _render(self):
         self._renderer.render()

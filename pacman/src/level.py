@@ -6,10 +6,12 @@ from sprites.floor import Floor
 from sprites.coin import Coin
 from sprites.ghost import Ghost
 from sprites.teleporter import Teleporter
+from sprites.powerup import PowerUp
 
 
 class Level:
-    def __init__(self, level_map, cell_size):
+    def __init__(self, level_map, cell_size, clock):
+        self.clock = clock
         self.score = 0
         self.lives = 3
         self.level = 1
@@ -17,13 +19,16 @@ class Level:
         self.cell_size = cell_size
         self.width = len(level_map[0])
         self.player = None
+        self.powerup_active = False
         self.teleporter_left = None
         self.teleporter_right = None
         self.boxes = pygame.sprite.Group()
         self.floors = pygame.sprite.Group()
         self.coins = pygame.sprite.Group()
         self.ghosts = pygame.sprite.Group()
+        self.powerups = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
+        self.time_left = None
 
         self._initialize_sprites(self.level_map)
 
@@ -60,13 +65,16 @@ class Level:
                     self.teleporter_right = Teleporter(
                         normalized_x, normalized_y, "right")
                     self.floors.add(Floor(normalized_x, normalized_y))
+                elif cell == 7:
+                    self.powerups.add(PowerUp(normalized_x, normalized_y))
+                    self.floors.add(Floor(normalized_x, normalized_y))
 
         self.all_sprites.add(self.floors, self.boxes,
-                             self.coins, self.player, self.ghosts)  # teleporters removed (for now)
+                             self.coins, self.powerups, self.player, self.ghosts)  # teleporters removed (for now)
 
     def check_death(self):
         death = pygame.sprite.spritecollide(self.player, self.ghosts, False)
-        if pygame.sprite.spritecollide(self.player, self.ghosts, False):
+        if pygame.sprite.spritecollide(self.player, self.ghosts, False) and not self.powerup_active:
             self.lives -= 1
             if self.lives > 0:
                 self.boxes = pygame.sprite.Group()
@@ -77,6 +85,10 @@ class Level:
                 self._initialize_sprites(self.level_map)
             else:
                 self.player.kill()
+
+        if pygame.sprite.spritecollide(self.player, self.ghosts, False) and self.powerup_active:
+            pygame.sprite.spritecollide(self.player, self.ghosts, True)
+
         return death
 
     def _check_move(self, x_coord=0, y_coord=0):
@@ -93,6 +105,20 @@ class Level:
     def _check_collect_coin(self):
         if pygame.sprite.spritecollide(self.player, self.coins, True):
             self.score += 1
+
+    def _activate_powerup(self):
+        self.time_left = self.clock.get_ticks() + 5000
+        self.powerup_active = True
+
+    def _deactivate_powerup(self):
+        if self.time_left == None:
+            return
+        if self.time_left < self.clock.get_ticks():
+            self.powerup_active = False
+
+    def _check_collect_powerup(self):
+        if pygame.sprite.spritecollide(self.player, self.powerups, True):
+            self._activate_powerup()
 
     def move_player(self, x_coord=0, y_coord=0):
         if not self._check_move(x_coord, y_coord) or not self.player.alive():
@@ -124,6 +150,9 @@ class Level:
     def get_level(self):
         return self.level
 
+    def get_powerup_status(self):
+        return self.powerup_active
+    
     def check_coins(self):
         if not self.coins:
             # no coins on map = new level
