@@ -26,3 +26,5 @@ Sovellus käynnistyy menuun, josta painamalle "new game" luo sovellus uuden peli
 
 Pelissä on tarkoitus kerätä keltaisia palloja ja samalla väistellä kummituksia. Kummituksia voidaan kuitenkin syödä hetkellisesti keräämällä valkoinen power up.
 
+![image](https://user-images.githubusercontent.com/128263908/235780552-7bf8c352-3b1e-48c9-b00d-3f9b77cd3575.png)
+
