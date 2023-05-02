@@ -70,7 +70,7 @@ class Level:
                     self.floors.add(Floor(normalized_x, normalized_y))
 
         self.all_sprites.add(self.floors, self.boxes,
-                             self.coins, self.powerups, self.player, self.ghosts)  # teleporters removed (for now)
+                             self.coins, self.powerups, self.player, self.ghosts)
 
     def check_death(self):
         death = pygame.sprite.spritecollide(self.player, self.ghosts, False)
@@ -110,15 +110,13 @@ class Level:
         self.time_left = self.clock.get_ticks() + 5000
         self.powerup_active = True
 
-    def _deactivate_powerup(self):
-        if self.time_left == None:
+    def check_powerup(self):
+        if pygame.sprite.spritecollide(self.player, self.powerups, True):
+            self._activate_powerup()
+        if self.time_left is None:
             return
         if self.time_left < self.clock.get_ticks():
             self.powerup_active = False
-
-    def _check_collect_powerup(self):
-        if pygame.sprite.spritecollide(self.player, self.powerups, True):
-            self._activate_powerup()
 
     def move_player(self, x_coord=0, y_coord=0):
         if not self._check_move(x_coord, y_coord) or not self.player.alive():
@@ -152,7 +150,7 @@ class Level:
 
     def get_powerup_status(self):
         return self.powerup_active
-    
+
     def check_coins(self):
         if not self.coins:
             # no coins on map = new level

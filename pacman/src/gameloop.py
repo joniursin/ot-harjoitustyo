@@ -24,9 +24,8 @@ class GameLoop:
         # load new level
         self._level.check_coins()
 
-        # deactivates power up if active
-        self._level._check_collect_powerup()
-        self._level._deactivate_powerup()
+        # activate power up if collected and deactivates when time runs out
+        self._level.check_powerup()
 
         if self._clock.get_ticks() > self._ghost_movement:
             self._level.move_ghosts()

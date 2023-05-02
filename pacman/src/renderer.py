@@ -27,12 +27,13 @@ class Renderer:
 
         if Level.get_powerup_status(self._level):
             score_text = font.render(
-            "Power up activated for 5 seconds!", True, (255, 255, 255))
+                "Power up activated for 5 seconds!", True, (255, 255, 255))
             self._display.blit(score_text, (140, 620))
         # Draw game over
         if not Level.get_player(self._level).alive():
             self._display.fill((0, 0, 0))
-            score_text = font.render("Game Over! Press 'e' to go back to the main menu", True, (255, 255, 255))
+            score_text = font.render(
+                "Game Over! Press 'e' to go back to the main menu", True, (255, 255, 255))
             self._display.blit(score_text, (30, 300))
 
         pygame.display.update()

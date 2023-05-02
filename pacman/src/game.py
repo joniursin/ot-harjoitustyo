@@ -29,6 +29,7 @@ DISPLAY_WIDTH = WIDTH * CELL_SIZE
 DISPLAY = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
 pygame.init()
 
+
 def menu():
     while True:
         mouse = pygame.mouse.get_pos()
@@ -38,22 +39,22 @@ def menu():
                 pygame.quit()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if WIDTH/2 <= mouse[0] <= WIDTH/2+140 and HEIGHT/2 <= mouse[1] <= HEIGHT/2+40:
+                if WIDTH/2 <= mouse[0] <= WIDTH/2+150 and HEIGHT/2 <= mouse[1] <= HEIGHT/2+50:
                     main()
 
         DISPLAY.fill((0, 0, 0))
 
-        if WIDTH/2 <= mouse[0] <= WIDTH/2+140 and HEIGHT/2 <= mouse[1] <= HEIGHT/2+40:
+        if WIDTH/2 <= mouse[0] <= WIDTH/2+150 and HEIGHT/2 <= mouse[1] <= HEIGHT/2+50:
             pygame.draw.rect(DISPLAY, (170, 170, 170), [
-                             WIDTH/2, HEIGHT/2, 140, 40])
+                             WIDTH/2, HEIGHT/2, 150, 50])
 
         else:
             pygame.draw.rect(DISPLAY, (100, 100, 100), [
-                             WIDTH/2, HEIGHT/2, 140, 40])
+                             WIDTH/2, HEIGHT/2, 150, 50])
 
         font = pygame.font.SysFont("Arial", 36)
         DISPLAY.blit(font.render("New game", True,
-                     (255, 255, 255)), (WIDTH/2 + 10, HEIGHT/2))
+                     (255, 255, 255)), (WIDTH/2 + 10, HEIGHT/2 + 10))
 
         pygame.display.update()
 
