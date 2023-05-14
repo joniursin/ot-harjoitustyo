@@ -4,9 +4,8 @@ Sovelluksen tarkoituksena on luoda Pacman peli, joka toimii pääpiirteiltää s
 
 ### Release
 
-[Release 1](https://github.com/joniursin/ot-harjoitustyo/releases/tag/viikko5)
+[Lopullinen Release](https://github.com/joniursin/ot-harjoitustyo/releases/tag/loppupalautus)
 
-[Release 2](https://github.com/joniursin/ot-harjoitustyo/releases/tag/viikko6)
 
 ### Dokumentaatio
 
