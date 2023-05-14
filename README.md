@@ -20,7 +20,7 @@ Sovelluksen tarkoituksena on luoda Pacman peli, joka toimii pääpiirteiltää s
 
 [Arkkitehtuuri](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/arkkitehtuuri.md)
 
-[Testaus](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/testaus.md)
+[Testausdokumentti](https://github.com/joniursin/ot-harjoitustyo/blob/main/pacman/dokumentaatio/testaus.md)
 
 ### Asennus
 
