@@ -19,11 +19,11 @@ class Renderer:
         if Level.get_lives(self._level) > 0:
             score_text = font.render(
                 "Lives: " + str(Level.get_lives(self._level)), True, (255, 255, 255))
-            self._display.blit(score_text, (160, 10))
+            self._display.blit(score_text, (300, 10))
 
         score_text = font.render(
             "Level: " + str(Level.get_level(self._level)), True, (255, 255, 255))
-        self._display.blit(score_text, (460, 10))
+        self._display.blit(score_text, (500, 10))
 
         if Level.get_powerup_status(self._level):
             score_text = font.render(
