@@ -87,6 +87,7 @@ class Level:
                 self.player.kill()
 
         if pygame.sprite.spritecollide(self.player, self.ghosts, False) and self.powerup_active:
+            self.score += 400 * self.level
             pygame.sprite.spritecollide(self.player, self.ghosts, True)
 
         return death
@@ -104,7 +105,7 @@ class Level:
 
     def _check_collect_coin(self):
         if pygame.sprite.spritecollide(self.player, self.coins, True):
-            self.score += 1
+            self.score += 10 * self.level
 
     def _activate_powerup(self):
         self.time_left = self.clock.get_ticks() + 5000
@@ -112,6 +113,7 @@ class Level:
 
     def check_powerup(self):
         if pygame.sprite.spritecollide(self.player, self.powerups, True):
+            self.score += 100 * self.level
             self._activate_powerup()
         if self.time_left is None:
             return
@@ -152,7 +154,7 @@ class Level:
         return self.powerup_active
 
     def check_coins(self):
-        if not self.coins:
+        if not self.coins and not self.powerups:
             # no coins on map = new level
             self.level += 1
             self.boxes = pygame.sprite.Group()
