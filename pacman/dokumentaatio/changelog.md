@@ -23,3 +23,9 @@
 - Lisätty power up, jonka avulla pelaaja voi syödä vihollisia tietyn ajan verran
 - Lisätty menu, jonka avulla voidaan käynnistää peli ja palata sinne pelin loppuessa
 - Lisätty erillinen ruutu, kun pelaaja kuolee
+
+## Viikko 5
+
+- Lisätty tietokanta johon tallennetaan pelaajien tulokset
+- Pelaajan kuollessa hänen nimellään tallennetaan tulos sekä ajankohta tietokantaan
+- Lisätty menu josta voidaan aloittaa peli, sulkea ohjelma ja katsoa parhaita tuloksia
