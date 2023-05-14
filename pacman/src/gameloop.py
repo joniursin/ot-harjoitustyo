@@ -45,6 +45,7 @@ class GameLoop:
                     return False
             elif event.type == pygame.QUIT:
                 pygame.quit()
+                break
 
     def _render(self):
         self._renderer.render()

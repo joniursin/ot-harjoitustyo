@@ -1,4 +1,6 @@
 import pygame
+import pygame_menu
+from pygame_menu import themes
 from level import Level
 from gameloop import GameLoop
 from eventqueue import EventQueue
@@ -28,48 +30,24 @@ DISPLAY_WIDTH = WIDTH * CELL_SIZE
 
 DISPLAY = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
 pygame.init()
-
-
-def menu():
-    while True:
-        mouse = pygame.mouse.get_pos()
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if WIDTH/2 <= mouse[0] <= WIDTH/2+150 and HEIGHT/2 <= mouse[1] <= HEIGHT/2+50:
-                    main()
-
-        DISPLAY.fill((0, 0, 0))
-
-        if WIDTH/2 <= mouse[0] <= WIDTH/2+150 and HEIGHT/2 <= mouse[1] <= HEIGHT/2+50:
-            pygame.draw.rect(DISPLAY, (170, 170, 170), [
-                             WIDTH/2, HEIGHT/2, 150, 50])
-
-        else:
-            pygame.draw.rect(DISPLAY, (100, 100, 100), [
-                             WIDTH/2, HEIGHT/2, 150, 50])
-
-        font = pygame.font.SysFont("Arial", 36)
-        DISPLAY.blit(font.render("New game", True,
-                     (255, 255, 255)), (WIDTH/2 + 10, HEIGHT/2 + 10))
-
-        pygame.display.update()
-
+pygame.display.set_caption("Main menu")
 
 def main():
     pygame.display.set_caption("Pacman")
-
+    
     clock = Clock()
     level = Level(LEVEL_MAP, CELL_SIZE, clock)
     event_queue = EventQueue()
     renderer = Renderer(DISPLAY, level)
     game_loop = GameLoop(level, renderer, event_queue, clock, CELL_SIZE)
-
     game_loop.start()
 
+def start_the_game():
+    main()
 
-if __name__ == "__main__":
-    menu()
+mainmenu = pygame_menu.Menu("Pacman", DISPLAY_WIDTH, DISPLAY_HEIGHT, theme=themes.THEME_ORANGE)
+player = mainmenu.add.text_input("Your name: ", default="username", maxchar=14)
+mainmenu.add.button("Play", start_the_game)
+mainmenu.add.button("Quit", pygame_menu.events.EXIT)
+ 
+mainmenu.mainloop(DISPLAY)
