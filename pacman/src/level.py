@@ -5,7 +5,6 @@ from sprites.box import Box
 from sprites.floor import Floor
 from sprites.coin import Coin
 from sprites.ghost import Ghost
-from sprites.teleporter import Teleporter
 from sprites.powerup import PowerUp
 
 
@@ -20,8 +19,6 @@ class Level:
         self.width = len(level_map[0])
         self.player = None
         self.powerup_active = False
-        self.teleporter_left = None
-        self.teleporter_right = None
         self.boxes = pygame.sprite.Group()
         self.floors = pygame.sprite.Group()
         self.coins = pygame.sprite.Group()
@@ -56,14 +53,6 @@ class Level:
                     self.floors.add(Floor(normalized_x, normalized_y))
                 elif cell == 4:
                     self.ghosts.add(Ghost(normalized_x, normalized_y))
-                    self.floors.add(Floor(normalized_x, normalized_y))
-                elif cell == 5:
-                    self.teleporter_left = Teleporter(
-                        normalized_x, normalized_y, "left")
-                    self.floors.add(Floor(normalized_x, normalized_y))
-                elif cell == 6:
-                    self.teleporter_right = Teleporter(
-                        normalized_x, normalized_y, "right")
                     self.floors.add(Floor(normalized_x, normalized_y))
                 elif cell == 7:
                     self.powerups.add(PowerUp(normalized_x, normalized_y))
@@ -124,10 +113,6 @@ class Level:
         if not self._check_move(x_coord, y_coord) or not self.player.alive():
             return
         self.player.rect.move_ip(x_coord, y_coord)
-        # if pygame.sprite.collide_rect(self.player, self.teleporter_left):
-        # self.player.rect.move_ip(self.cell_size*(self.width-1), y_coord)
-        # elif pygame.sprite.collide_rect(self.player, self.teleporter_right):
-        # self.player.rect.move_ip(-(self.cell_size*(self.width-1)), y_coord)
 
         self._check_collect_coin()
 
