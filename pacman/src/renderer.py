@@ -32,8 +32,10 @@ class Renderer:
         # Draw game over
         if not Level.get_player(self._level).alive():
             self._display.fill((0, 0, 0))
+            gameover_text = font.render("Game over!", True, (255, 255, 255))
             score_text = font.render(
-                "Game Over! Press 'e' to go back to the main menu", True, (255, 255, 255))
-            self._display.blit(score_text, (30, 300))
+                "Press 'e' to submit your score", True, (255, 255, 255))
+            self._display.blit(gameover_text, (240, 200))
+            self._display.blit(score_text, (140, 300))
 
         pygame.display.update()
