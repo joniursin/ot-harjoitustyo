@@ -44,10 +44,10 @@ class TestLevel(unittest.TestCase):
         self.assertEqual(self.level.score, 0)
 
         self.level.move_player(y_coord=CELL_SIZE)
-        self.assertEqual(self.level.score, 1)
+        self.assertEqual(self.level.score, 10)
 
         self.level.move_player(y_coord=CELL_SIZE)
-        self.assertEqual(self.level.score, 2)
+        self.assertEqual(self.level.score, 20)
 
     def test_player_can_die(self):
         player = self.level.player
