@@ -1,14 +1,18 @@
 import pygame
-
+import database_connection
+from level import Level
+from datetime import datetime
 
 class GameLoop:
-    def __init__(self, level, renderer, event_queue, clock, cell_size):
+    def __init__(self, level, renderer, event_queue, clock, cell_size, player_name):
         self._level = level
         self._renderer = renderer
         self._event_queue = event_queue
         self._clock = clock
         self._cell_size = cell_size
         self._ghost_movement = self._clock.get_ticks() + 1000
+        self._player_name = player_name
+        self._connection = database_connection.get_database_connection()
 
     def start(self):
         while True:
@@ -42,6 +46,13 @@ class GameLoop:
                 if event.key == pygame.K_DOWN:
                     self._level.move_player(y_coord=self._cell_size)
                 if event.key == pygame.K_e and self._level.check_death():
+                    # After death submit score via sqlite
+                    date = datetime.now()
+                    date = date.strftime("%d/%m/%Y %H:%M:%S")
+
+                    cursor = self._connection.cursor()
+                    cursor.execute("INSERT INTO scores (player, score, date) VALUES (?, ?, ?)", (self._player_name, Level.get_score(self._level), date))
+
                     return False
             elif event.type == pygame.QUIT:
                 pygame.quit()
