@@ -18,7 +18,7 @@ poetry run invoke start
 
 ## Käyttö
 
-Sovellus käynnistyy menuun, josta painamalle "Play" luo sovellus uuden pelin.
+Sovellus käynnistyy menuun, josta painamalle "Play" luo sovellus uuden pelin. Voit syöttää kohtaan username peli nimesi.
 ![image](https://github.com/joniursin/ot-harjoitustyo/assets/128263908/c1b813d4-e8ca-4e07-b2ee-522c5bc11422)
 
 
