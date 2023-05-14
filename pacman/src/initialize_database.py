@@ -18,6 +18,7 @@ def create_tables(connection):
         create table scores (
             id INT primary key,
             player text,
+            score int,
             date text
         );
     ''')
