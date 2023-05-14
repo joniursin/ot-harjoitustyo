@@ -56,7 +56,7 @@ def score_menu():
 
 def get_scores():
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM scores ORDER BY score DESC")
+    cursor.execute("SELECT * FROM scores ORDER BY score DESC;")
     rows = cursor.fetchall()
 
     o = 1

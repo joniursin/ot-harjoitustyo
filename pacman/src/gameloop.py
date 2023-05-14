@@ -51,7 +51,7 @@ class GameLoop:
                     date = date.strftime("%d/%m/%Y %H:%M:%S")
 
                     cursor = self._connection.cursor()
-                    cursor.execute("INSERT INTO scores (player, score, date) VALUES (?, ?, ?)", (self._player_name, Level.get_score(self._level), date))
+                    cursor.execute("INSERT INTO scores (player, score, date) VALUES (?, ?, ?);", (self._player_name, Level.get_score(self._level), date))
 
                     return False
             elif event.type == pygame.QUIT:

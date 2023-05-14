@@ -4,9 +4,7 @@ from database_connection import get_database_connection
 def drop_tables(connection):
     cursor = connection.cursor()
 
-    cursor.execute('''
-        drop table if exists scores;
-    ''')
+    cursor.execute("DROP TABLE IF EXISTS scores;")
 
     connection.commit()
 
@@ -14,14 +12,7 @@ def drop_tables(connection):
 def create_tables(connection):
     cursor = connection.cursor()
 
-    cursor.execute('''
-        create table scores (
-            id INT primary key,
-            player text,
-            score int,
-            date text
-        );
-    ''')
+    cursor.execute("CREATE TABLE scores (id INT PRIMARY KEY, player TEXT, score INT, date TEXT);")
 
     connection.commit()
 
