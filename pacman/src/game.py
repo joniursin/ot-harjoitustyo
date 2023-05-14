@@ -65,13 +65,13 @@ def get_scores():
     cursor.execute("SELECT * FROM scores ORDER BY score DESC;")
     rows = cursor.fetchall()
 
-    o = 1
+    rank = 1
     for i in rows:
-        if o == 11:
+        if rank == 11:
             break
-        score_text = f"{o}. {i['player']} | Score: {i['score']} | Date: {i['date']}\n"
+        score_text = f"{rank}. {i['player']} | Score: {i['score']} | Date: {i['date']}\n"
         scores.add.label(score_text, max_char=-1, font_size=20)
-        o += 1
+        rank += 1
 
 mainmenu = pygame_menu.Menu("Pacman", DISPLAY_WIDTH, DISPLAY_HEIGHT, theme=themes.THEME_ORANGE)
 player_name = mainmenu.add.text_input("Your name: ", default="username", maxchar=14)
