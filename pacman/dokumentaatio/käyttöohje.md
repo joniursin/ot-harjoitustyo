@@ -18,8 +18,8 @@ poetry run invoke start
 
 ## Käyttö
 
-Sovellus käynnistyy menuun, josta painamalle "new game" luo sovellus uuden pelin.
-![image](https://user-images.githubusercontent.com/128263908/235780464-8135454a-0849-4aba-95bc-deaea4e2009f.png)
+Sovellus käynnistyy menuun, josta painamalle "Play" luo sovellus uuden pelin.
+![image](https://github.com/joniursin/ot-harjoitustyo/assets/128263908/c1b813d4-e8ca-4e07-b2ee-522c5bc11422)
 
 
 ## Pelaaminen
@@ -27,4 +27,12 @@ Sovellus käynnistyy menuun, josta painamalle "new game" luo sovellus uuden peli
 Pelissä on tarkoitus kerätä keltaisia palloja ja samalla väistellä kummituksia. Kummituksia voidaan kuitenkin syödä hetkellisesti keräämällä valkoinen power up.
 
 ![image](https://user-images.githubusercontent.com/128263908/235780552-7bf8c352-3b1e-48c9-b00d-3f9b77cd3575.png)
+
+## Tuloksen tallennus
+
+Kun peli loppuu pelaaja tallentaa tuloksensa tietokantaan painamalla näppäintä "e", tuloksia voidaan katsoa menun kohdasta "Scoreboard".
+
+## Lopetus
+
+Sovellus voidaan lopettaa painamalla "Quit" nappia.
 
