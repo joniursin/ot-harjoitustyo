@@ -4,7 +4,19 @@ from level import Level
 from datetime import datetime
 
 class GameLoop:
+    """Luokka, joka vastaa pelistä, sen ajankulusta sekä tapahtumista
+    """
     def __init__(self, level, renderer, event_queue, clock, cell_size, player_name):
+        """Luokan konstruktori, joka luo pelin
+
+        Args:
+            level (Level): Peli kenttä
+            renderer (Renderer): Piirtäjä
+            event_queue (EventQueue): Tapahtumajono
+            clock (Clock): Pelin kello
+            cell_size (int): Yhden kentän neliön koko
+            player_name (string): Pelaajan nimi
+        """
         self._level = level
         self._renderer = renderer
         self._event_queue = event_queue
@@ -15,6 +27,8 @@ class GameLoop:
         self._connection = database_connection.get_database_connection()
 
     def start(self):
+        """Aloittaa pelin kulun
+        """
         while True:
             if self._handle_events() is False:
                 break
@@ -22,6 +36,11 @@ class GameLoop:
             self._clock.tick(60)
 
     def _handle_events(self):
+        """Käsittelee pelin tapahtumat, kuten näppäimen painalmukset sekä lataa uuden tason
+
+        Returns:
+            False: Palauttaa False, kun peli on päättynyt
+        """
         if self._level.check_death():
             self._ghost_movement = self._clock.get_ticks() + 2000
 
@@ -59,4 +78,6 @@ class GameLoop:
                 break
 
     def _render(self):
+        """Kutsuu piirtäjää piirtämään ruudun tapahtumat
+        """
         self._renderer.render()

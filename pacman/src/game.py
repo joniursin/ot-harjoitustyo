@@ -35,11 +35,11 @@ DISPLAY_WIDTH = WIDTH * CELL_SIZE
 
 DISPLAY = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
 pygame.init()
-pygame.display.set_caption("Main menu")
+pygame.display.set_caption("Pacman")
 
 def main():
-    pygame.display.set_caption("Pacman")
-    
+    """Luo kellon, kentän, tapahtumajonon, piirtäjän, sekä käynnistää pelin
+    """
     clock = Clock()
     level = Level(LEVEL_MAP, CELL_SIZE, clock)
     event_queue = EventQueue()
@@ -48,13 +48,19 @@ def main():
     game_loop.start()
 
 def start_the_game():
+    """Käynnistää pelin, kutsuttaessa menusta
+    """
     main()
 
 def score_menu():
+    """Vaihtaa menu näkymäksi high score listan ja hakee scoret
+    """
     mainmenu._open(scores)
     get_scores()
 
 def get_scores():
+    """Hakee tietokannasta kaikki scoret ja lisää ne näytölle
+    """
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM scores ORDER BY score DESC;")
     rows = cursor.fetchall()

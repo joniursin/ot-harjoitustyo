@@ -9,7 +9,16 @@ from sprites.powerup import PowerUp
 
 
 class Level:
+    """Luokka, joka luo tason ja tutkii sen tapahtumia
+    """
     def __init__(self, level_map, cell_size, clock):
+        """Luokan konstruktori, joka luo uuden tason
+
+        Args:
+            level_map (list): Tason kuvaelma
+            cell_size (int): Yhden kentän neliön koko
+            clock (Clock): Pelin kello
+        """
         self.clock = clock
         self.score = 0
         self.lives = 3
@@ -30,6 +39,11 @@ class Level:
         self._initialize_sprites(self.level_map)
 
     def _initialize_sprites(self, level_map):
+        """Tekee jokaisesta taso neliöstä spriten ja lisää sille koordinaatit pelissä
+
+        Args:
+            level_map (list): Tason kuvaelma
+        """
         height = len(level_map)
         width = len(level_map[0])
 
@@ -62,6 +76,11 @@ class Level:
                              self.coins, self.powerups, self.player, self.ghosts)
 
     def check_death(self):
+        """Tarkistaa onko pelaaja osunut kummitukseen, jos on vähenetään elämä
+
+        Returns:
+            bool: Palauttaa True, jos pelaaja on kuollut ja False jos ei
+        """
         death = pygame.sprite.spritecollide(self.player, self.ghosts, False)
         if pygame.sprite.spritecollide(self.player, self.ghosts, False) and not self.powerup_active:
             self.lives -= 1
@@ -76,12 +95,22 @@ class Level:
                 self.player.kill()
 
         if pygame.sprite.spritecollide(self.player, self.ghosts, False) and self.powerup_active:
+            death = False
             self.score += 400 * self.level
             pygame.sprite.spritecollide(self.player, self.ghosts, True)
 
         return death
 
     def _check_move(self, x_coord=0, y_coord=0):
+        """Tarkistaa voiko pelaaja liikkua eli onko seinä edessä
+
+        Args:
+            x_coord (int, optional): Maailman x-koordinaatti. Defaults to 0.
+            y_coord (int, optional): Maailman y-koordinaatti. Defaults to 0.
+
+        Returns:
+            bool: True, jos voi liikkua muuten False
+        """
         self.player.rect.move_ip(x_coord, y_coord)
         can_move = False
         if pygame.sprite.spritecollide(self.player, self.floors, False):
@@ -93,14 +122,20 @@ class Level:
         return can_move
 
     def _check_collect_coin(self):
+        """Tarkistaa onko pelaaja kolikon päällä ja kerää tämän
+        """
         if pygame.sprite.spritecollide(self.player, self.coins, True):
             self.score += 10 * self.level
 
     def _activate_powerup(self):
+        """Aktivoi power upin 
+        """
         self.time_left = self.clock.get_ticks() + 5000
         self.powerup_active = True
 
     def check_powerup(self):
+        """Tarkistaa onko pelaaja power upin kohdalla, jos on kutsuu sen käynnistystä
+        """
         if pygame.sprite.spritecollide(self.player, self.powerups, True):
             self.score += 100 * self.level
             self._activate_powerup()
@@ -110,6 +145,12 @@ class Level:
             self.powerup_active = False
 
     def move_player(self, x_coord=0, y_coord=0):
+        """Liikuttaa pelaajaa kyseiseen kohtaan
+
+        Args:
+            x_coord (int, optional): Maailman x-koordinaatti. Defaults to 0.
+            y_coord (int, optional): Maailman y-koordinaatti. Defaults to 0.
+        """
         if not self._check_move(x_coord, y_coord) or not self.player.alive():
             return
         self.player.rect.move_ip(x_coord, y_coord)
@@ -117,30 +158,63 @@ class Level:
         self._check_collect_coin()
 
     def get_score(self):
+        """Palauttaa scoren
+
+        Returns:
+            int: Pelaajan score
+        """
         return self.score
 
     def get_player(self):
+        """Palauttaa pelaajan
+
+        Returns:
+            Player: Pelaaja olio
+        """
         return self.player
 
     def move_ghosts(self):
+        """Liikuttaa kummituksia kentällä
+        """
         for ghost in self.ghosts:
             ghost.choose_move(self.cell_size, self.boxes)
 
     def get_lives(self):
+        """Palauttaa elämät
+
+        Returns:
+            int: Pelaajan elämät
+        """
         return self.lives
 
     def set_lives(self, value):
+        """Asettaa elämät tietyksi
+
+        Args:
+            value (int): Elämien määrä
+        """
         self.lives = value
 
     def get_level(self):
+        """Palauttaa tason numeron
+
+        Returns:
+            int : Taso
+        """
         return self.level
 
     def get_powerup_status(self):
+        """Palauttaa onko power up aktiivinen
+
+        Returns:
+            bool : power upin tila
+        """
         return self.powerup_active
 
     def check_coins(self):
+        """Tarkistaa onko kentällä enää kolikoita tai power uppeja, jos ei luo uuden tason
+        """
         if not self.coins and not self.powerups:
-            # no coins on map = new level
             self.level += 1
             self.boxes = pygame.sprite.Group()
             self.floors = pygame.sprite.Group()
